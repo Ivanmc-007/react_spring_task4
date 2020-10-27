@@ -39,7 +39,9 @@ public class UserRESTController {
       return userService.save(user);
    }
 
-   @PutMapping("/update-status-block")
+   // @PutMapping is replaced by POST because WARNING in Spring, and from time to
+   // time it works not correctly
+   @PostMapping("/update-status-block")
    public List<User> updateStatusBlock(@RequestBody List<UserId> listUserId, @CurrentUser User user) {
       List<User> listRes = new ArrayList<>();
       for (UserId userId : listUserId) {
@@ -50,7 +52,9 @@ public class UserRESTController {
       return listRes;
    }
 
-   @PutMapping("/update-status-unblock")
+   // @PutMapping is replaced by POST because WARNING in Spring, and from time to
+   // time it works not correctly
+   @PostMapping("/update-status-unblock")
    public List<User> updateStatusUnblock(@RequestBody List<UserId> listUserId) {
       List<User> listRes = new ArrayList<>();
       listUserId.forEach(userId -> {
@@ -61,14 +65,11 @@ public class UserRESTController {
       return listRes;
    }
 
-   @DeleteMapping("/{id}")
-   public void deleteUser(@PathVariable(name = "id") Long id) {
-      userService.removeUserById(id);
-   }
-
    @DeleteMapping("/delete-user-list")
    public void deleteUsers(@RequestBody List<UserId> listUserId) {
-      listUserId.stream().map(UserId::getId).forEach(userService::removeUserById);
+      for (UserId userId : listUserId) {
+         userService.removeUserById(userId.getId());
+      }
    }
 
    @GetMapping("/current-user")

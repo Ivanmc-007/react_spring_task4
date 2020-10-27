@@ -1,11 +1,13 @@
 .section-one {
+   padding-top: 15px;
+   padding-bottom: 15px;
+
    &__form {
       display: inline-block;
       margin: 0 10px 5px 0;
    }
 
    &__botton {   
-      background-color: #555;
    }
 
    &__table {
@@ -23,7 +25,14 @@
    }
 
    &__table-header th {
+      height: 40px;
       padding: 5px;
+      &:first-child {
+         border-top-left-radius: 10px;
+      }
+      &:last-child {
+         border-top-right-radius: 10px;
+      }
    }
 
    &__table-body {

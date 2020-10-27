@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IndexMain from "../components/IndexMain/index";
+import Wrapper from "../components/Wrapper/index";
+import IndexSectionOne from "../components/IndexSectionOne/index";
 
-ReactDOM.render(<IndexMain />, document.getElementById("root"));
+ReactDOM.render(<Wrapper />, document.getElementById("root"));
+ReactDOM.render(<IndexSectionOne />, document.getElementById("main"));

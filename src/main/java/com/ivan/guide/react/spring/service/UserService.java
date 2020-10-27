@@ -11,12 +11,12 @@ import com.ivan.guide.react.spring.entity.UserStatus;
 @Service
 public class UserService {
    // TODO: заглушка DB
-   private Long countKey = 3L;
+   private Long countKey = 123L;
    // TODO: заглушка DB
    private Map<Long, User> userList = new HashMap<>() {
       {
          User user1 = new User();
-         user1.setId(1L);
+         user1.setId(120L);
          user1.setName("Krokoziabrik");
          user1.setEmail("krokoziabrik@mail.ru");
          user1.setDateRegistration(new Date(1588444400000L));
@@ -25,7 +25,7 @@ public class UserService {
          user1.setPassword("1");
 
          User user2 = new User();
-         user2.setId(2L);
+         user2.setId(121L);
          user2.setName("Gribichek");
          user2.setEmail("gribichek@mail.ru");
          user2.setDateRegistration(new Date(1588444000000L));

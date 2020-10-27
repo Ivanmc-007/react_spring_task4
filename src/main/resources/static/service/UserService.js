@@ -21,20 +21,20 @@ class UserService {
    }
 
    async updateStatusUnblock(arrayCheckedId) {
-      return fetch(URL_UPDATE_STATUS_UNBLOCK, { method: "PUT", headers: { "Content-Type": 'application/json' }, body: JSON.stringify(arrayCheckedId) })
+      return fetch(URL_UPDATE_STATUS_UNBLOCK, { method: "POST", headers: { "Content-Type": 'application/json' }, body: JSON.stringify(arrayCheckedId) })
          .then(response => response.status === 200 && response.json())
          .catch(error => console.log(error));
    }
 
    async updateStatusBlock(arrayCheckedId) {
-      return fetch(URL_UPDATE_STATUS_BLOCK, { method: "PUT", headers: { "Content-Type": 'application/json' }, body: JSON.stringify(arrayCheckedId) })
+      return fetch(URL_UPDATE_STATUS_BLOCK, { method: "POST", headers: { "Content-Type": 'application/json' }, body: JSON.stringify(arrayCheckedId) })
          .then(response => response.status === 200 && response.json())
          .catch(error => console.log(error));
    }
 
    async deleteUserList(arrayCheckedId) {
       return fetch(URL_DELETE_USER_LIST, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify(arrayCheckedId) })
-         .then(response => response.status === 200 && response.json())
+         .then(response => response.status === 200)
          .catch(error => console.log(error));
    }
 }

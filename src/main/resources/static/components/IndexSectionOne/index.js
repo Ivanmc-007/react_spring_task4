@@ -14,10 +14,7 @@ class IndexSectionOne extends Component {
    }
 
    componentDidMount() {
-      UserService.getCurrentUser().then(user => {
-         this.setState({ currUser: user });
-         console.log(user);
-      });
+      UserService.getCurrentUser().then(user => this.setState({ currUser: user }));
 
       UserService.getUsers().then(data => {
          let userList = data;
@@ -106,11 +103,14 @@ class IndexSectionOne extends Component {
       });
       if (arrayCheckedId.length !== 0) {
          UserService.updateStatusBlock(arrayCheckedId).then(data => {
-            let userList = this.changeStatusAndGetNewList(data, "BLOCK");
-            this.setState({ userList: userList });
+            if (toShutInMyselfToo)
+               this.logout();
+            else {
+               let userList = this.changeStatusAndGetNewList(data, "BLOCK");
+               this.setState({ userList: userList });
+            }
          });
-         if (toShutInMyselfToo)
-            this.logout();
+
       }
    }
 
@@ -145,7 +145,7 @@ class IndexSectionOne extends Component {
    }
 
    handlerDelete = (event) => {
-      event.preventDefault(); // off actions by default
+      event.preventDefault(); // turn off actions by default
       let arrayCheckedId = [];
       let newUserList = [];
       let toShutInMyselfToo = false;
@@ -159,13 +159,15 @@ class IndexSectionOne extends Component {
       });
       if (arrayCheckedId.length !== 0) {
          if (UserService.deleteUserList(arrayCheckedId)) {
-            this.setState({
-               userList: newUserList,
-               checkedRows: new Array(newUserList.length).fill(false)
-            });
+            if (toShutInMyselfToo)
+               this.logout();
+            else {
+               this.setState({
+                  userList: newUserList,
+                  checkedRows: new Array(newUserList.length).fill(false)
+               });
+            }
          }
-         if (toShutInMyselfToo)
-            this.logout();
       }
    }
 

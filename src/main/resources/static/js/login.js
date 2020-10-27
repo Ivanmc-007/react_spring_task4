@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
-import LoginForm from "../components/LoginForm/index";
+import Wrapper from "../components/Wrapper/index";
+import LoginSectionOne from "../components/LoginSectionOne/index";
 
-ReactDom.render(<LoginForm />, document.getElementById("root"));
+ReactDom.render(<Wrapper />, document.getElementById("root"));
+ReactDom.render(<LoginSectionOne />, document.getElementById("main"));
