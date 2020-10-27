@@ -1,0 +1,36 @@
+.section-one {
+   &__form {
+      display: inline-block;
+      margin: 0 10px 5px 0;
+   }
+
+   &__botton {   
+      background-color: #555;
+   }
+
+   &__table {
+      width: 100%;
+   }
+
+   &__table-header {
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #eeeeee;
+      background-color: #555;
+      & th {
+         padding: 5px;
+      }
+   }
+
+   &__table-header th {
+      padding: 5px;
+   }
+
+   &__table-body {
+      font-size: 16px;
+   }
+
+   &__table-row td {
+      padding: 5px;
+   }
+}
