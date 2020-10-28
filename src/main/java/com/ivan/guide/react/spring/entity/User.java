@@ -3,15 +3,13 @@ package com.ivan.guide.react.spring.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+@Table(name = "usr")
 public class User implements UserDetails {
 
    @Id
@@ -28,6 +26,7 @@ public class User implements UserDetails {
 
    private Date dateLogin;
 
+   @Enumerated(EnumType.STRING)
    private UserStatus userStatus;
 
    public void setId(Long id) {
@@ -116,6 +115,6 @@ public class User implements UserDetails {
       return getUserStatus() != UserStatus.BLOCK;
    }
 
-   //TODO: equals + hashCode
+   // TODO: equals + hashCode
 
 }
