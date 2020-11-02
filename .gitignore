@@ -1,9 +1,12 @@
 HELP.md
 target/
+node_modules/
+node/
+
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+**/src/main/resources/static/js-prodaction
 ### STS ###
 .apt_generated
 .classpath

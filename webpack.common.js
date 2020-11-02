@@ -1,21 +1,13 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-   mode: 'development',
-   devtool: '#eval-source-map',
    entry: {
       index: path.join(__dirname, "src", "main", "resources", "static", "js", "index.js"),
       login: path.join(__dirname, "src", "main", "resources", "static", "js", "login.js"),
       registration: path.join(__dirname, "src", "main", "resources", "static", "js", "registration.js")
    },
-   output: {
-      filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist')
-   },
-   plugins: [
-      new CleanWebpackPlugin({ cleanStaleWebpackAssets: false })
-   ],
    module: {
       rules: [
          {
@@ -34,11 +26,21 @@ module.exports = {
          }
       ]
    },
-   devServer: {
-      contentBase: './dist',
-      port: 8090,
-      allowedHosts: [
-         'localhost:8080',
-      ]
-   }
-}
+   plugins: [
+      new CleanWebpackPlugin(),
+      // new HtmlWebpackPlugin({
+      //    title: 'Production',
+      //    template: path.join(__dirname, "src", "main", "resources", "templates", "template.html"),
+      //    inject: 'body'
+      // }),
+      // new HtmlWebpackPlugin({
+      //    title: 'Production',
+      //    // template: 'login.html',
+      //    // chunks: ['login.bundle.js']
+      // }),
+      // new HtmlWebpackPlugin({
+      //    title: 'Production',
+      //    // template: 'registration.html'
+      // })
+   ]
+};

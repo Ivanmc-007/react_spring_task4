@@ -27,8 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
    protected void configure(HttpSecurity http) throws Exception {
       // TODO: .csrf()
       // .disable() delete or read about
-      http.csrf().disable().authorizeRequests().antMatchers("/login", "/registration").permitAll().anyRequest()
-            .authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()// .logoutUrl("/login").invalidateHttpSession(true).deleteCookies("JSESSIONID")
+      http.csrf().disable().authorizeRequests().antMatchers("/login", "/registration", "/static/**").permitAll()
+            .anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()// .logoutUrl("/login").invalidateHttpSession(true).deleteCookies("JSESSIONID")
             .permitAll();
    }
 
@@ -43,6 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             return userDB;
          }
          throw new UsernameNotFoundException(email);
-      }).passwordEncoder(NoOpPasswordEncoder.getInstance()); // todo: и так сойдёт!
+      }).passwordEncoder(NoOpPasswordEncoder.getInstance()); // TODO: и так сойдёт!
    }
 }

@@ -35,7 +35,6 @@ public class UserRESTController {
 
    @PostMapping
    public User createNewUser(@RequestBody User user) {
-      user.setId(null);
       return userService.save(user);
    }
 
